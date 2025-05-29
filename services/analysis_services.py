@@ -382,7 +382,8 @@ def process_maintenance_check(file_path, media_type, task_id, token, env: Enviro
         db.add(maintenance_check)
         db.commit()
         db.refresh(maintenance_check)
-        bounding_img= process_image(file_path=file_path, media_type="image", task_id=task_id)
+        # bounding_img= process_image(file_path=file_path, media_type="image", task_id=task_id)
+        bounding_img = process_image(file_path=file_path, media_type="image", task_id=task_id, token=token, env=env) # updated by bhavan kumar
         fin_response_json={"Status":status_val,"general_description":response_json["general_description"],"image_path":f"{BASE_URL_PATH}/{os.path.normpath(file_path).replace(os.sep, '/')}",}
         return fin_response_json
         
