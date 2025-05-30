@@ -100,7 +100,8 @@ async def analyze_video(task_id: int=Form(...),
         with open(file_path, "wb") as f:
             f.write(await media_file.read())
 
-        result = process_video(file_path=file_path, media_type="video", task_id=task_id, db=db,env=env)
+        # result = process_video(file_path=file_path, media_type="video", task_id=task_id, db=db,env=env)
+        result = process_video(file_path=file_path, media_type="video", task_id=task_id, token=token, db=db, env=env) # updated by bhavan kumar
 
         return JSONResponse(content={"result": result})
     except Exception as e:
